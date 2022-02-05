@@ -1,0 +1,11 @@
+# Vagrantfile
+Vagrant.configure("2") do |config|
+        config.vm.box = "hashicorp/bionic64"
+        config.vm.network "public_network"
+        config.vm.network "forwarded_port", guest:22, host:22
+        config.vm.network "forwarded_port", guest:80, host:80
+	config.vm.provider :virtualbox do |vb|
+	    vb.gui = true
+	end
+	config.vm.synced_folder '.', '/vagrant', disabled: true
+end
